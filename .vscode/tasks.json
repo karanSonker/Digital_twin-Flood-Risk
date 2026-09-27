@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Write GeoJSON",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"-e",
+				"const fs=require('fs'); const gj={type:'FeatureCollection',features:[]}; const districts=[{id:1,name:'New Delhi',state:'Delhi',box:[77.0,28.4,77.5,28.9]},{id:2,name:'Mumbai City',state:'Maharashtra',box:[72.7,18.85,73.0,19.25]},{id:3,name:'Ranchi',state:'Jharkhand',box:[85.1,23.15,85.5,23.55]},{id:4,name:'Patna',state:'Bihar',box:[84.9,25.4,85.3,25.8]},{id:5,name:'Kolkata',state:'West Bengal',box:[88.15,22.35,88.55,22.75]},{id:6,name:'Chennai',state:'Tamil Nadu',box:[80.05,12.85,80.45,13.25]},{id:7,name:'Hyderabad',state:'Telangana',box:[78.25,17.15,78.65,17.55]},{id:8,name:'Ahmedabad',state:'Gujarat',box:[72.35,22.85,72.75,23.25]},{id:9,name:'Kamrup Metro',state:'Assam',box:[91.55,25.95,91.95,26.35]},{id:10,name:'Khordha',state:'Odisha',box:[85.6,20.05,86.0,20.45]},{id:11,name:'Lucknow',state:'Uttar Pradesh',box:[80.75,26.65,81.15,27.05]},{id:12,name:'Bhopal',state:'Madhya Pradesh',box:[77.2,23.05,77.6,23.45]}]; districts.forEach(d=>{const[x1,y1,x2,y2]=d.box;gj.features.push({type:'Feature',properties:{id:d.id,name:d.name,state:d.state},geometry:{type:'Polygon',coordinates:[[[x1,y1],[x2,y1],[x2,y2],[x1,y2],[x1,y1]]]}})}); fs.writeFileSync('D:/KARAN/testing/IFDT/flood-risk-digital-twin/public/data/districts.geojson',JSON.stringify(gj,null,2)); console.log('Written '+districts.length+' districts')"
+			]
+		}
+	]
+}

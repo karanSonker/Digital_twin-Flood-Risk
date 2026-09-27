@@ -1,0 +1,47 @@
+{
+  "name": "flood-risk-digital-twin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "seed": "npx tsx scripts/seed.ts",
+    "pump": "npx tsx scripts/pump.ts",
+    "pump:fast": "npx tsx scripts/pump.ts --interval 60"
+  },
+  "dependencies": {
+    "@deck.gl/layers": "^9.3.6",
+    "@deck.gl/mapbox": "^9.3.6",
+    "@deck.gl/react": "^9.3.6",
+    "@swc/helpers": "^0.5.23",
+    "@turf/turf": "^7.3.5",
+    "@vis.gl/react-maplibre": "^8.1.1",
+    "bcryptjs": "^3.0.3",
+    "deck.gl": "^9.3.6",
+    "jsonwebtoken": "^9.0.3",
+    "maplibre-gl": "^5.24.0",
+    "next": "16.2.10",
+    "pg": "^8.22.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "recharts": "^3.9.2",
+    "zod": "^4.4.3",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.0",
+    "typescript": "^5"
+  }
+}

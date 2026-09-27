@@ -1,0 +1,425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "New Delhi",
+        "state": "Delhi"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77,
+              28.4
+            ],
+            [
+              77.5,
+              28.4
+            ],
+            [
+              77.5,
+              28.9
+            ],
+            [
+              77,
+              28.9
+            ],
+            [
+              77,
+              28.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Mumbai City",
+        "state": "Maharashtra"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.7,
+              18.85
+            ],
+            [
+              73,
+              18.85
+            ],
+            [
+              73,
+              19.25
+            ],
+            [
+              72.7,
+              19.25
+            ],
+            [
+              72.7,
+              18.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Ranchi",
+        "state": "Jharkhand"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85.1,
+              23.15
+            ],
+            [
+              85.5,
+              23.15
+            ],
+            [
+              85.5,
+              23.55
+            ],
+            [
+              85.1,
+              23.55
+            ],
+            [
+              85.1,
+              23.15
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Patna",
+        "state": "Bihar"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              84.9,
+              25.4
+            ],
+            [
+              85.3,
+              25.4
+            ],
+            [
+              85.3,
+              25.8
+            ],
+            [
+              84.9,
+              25.8
+            ],
+            [
+              84.9,
+              25.4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Kolkata",
+        "state": "West Bengal"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              88.15,
+              22.35
+            ],
+            [
+              88.55,
+              22.35
+            ],
+            [
+              88.55,
+              22.75
+            ],
+            [
+              88.15,
+              22.75
+            ],
+            [
+              88.15,
+              22.35
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "Chennai",
+        "state": "Tamil Nadu"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.05,
+              12.85
+            ],
+            [
+              80.45,
+              12.85
+            ],
+            [
+              80.45,
+              13.25
+            ],
+            [
+              80.05,
+              13.25
+            ],
+            [
+              80.05,
+              12.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Hyderabad",
+        "state": "Telangana"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              78.25,
+              17.15
+            ],
+            [
+              78.65,
+              17.15
+            ],
+            [
+              78.65,
+              17.55
+            ],
+            [
+              78.25,
+              17.55
+            ],
+            [
+              78.25,
+              17.15
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "Ahmedabad",
+        "state": "Gujarat"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.35,
+              22.85
+            ],
+            [
+              72.75,
+              22.85
+            ],
+            [
+              72.75,
+              23.25
+            ],
+            [
+              72.35,
+              23.25
+            ],
+            [
+              72.35,
+              22.85
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Kamrup Metro",
+        "state": "Assam"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              91.55,
+              25.95
+            ],
+            [
+              91.95,
+              25.95
+            ],
+            [
+              91.95,
+              26.35
+            ],
+            [
+              91.55,
+              26.35
+            ],
+            [
+              91.55,
+              25.95
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "Khordha",
+        "state": "Odisha"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85.6,
+              20.05
+            ],
+            [
+              86,
+              20.05
+            ],
+            [
+              86,
+              20.45
+            ],
+            [
+              85.6,
+              20.45
+            ],
+            [
+              85.6,
+              20.05
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "name": "Lucknow",
+        "state": "Uttar Pradesh"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              80.75,
+              26.65
+            ],
+            [
+              81.15,
+              26.65
+            ],
+            [
+              81.15,
+              27.05
+            ],
+            [
+              80.75,
+              27.05
+            ],
+            [
+              80.75,
+              26.65
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "name": "Bhopal",
+        "state": "Madhya Pradesh"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              77.2,
+              23.05
+            ],
+            [
+              77.6,
+              23.05
+            ],
+            [
+              77.6,
+              23.45
+            ],
+            [
+              77.2,
+              23.45
+            ],
+            [
+              77.2,
+              23.05
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
