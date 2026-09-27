@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS rainfall_readings (
   id SERIAL PRIMARY KEY,
   district_id INT REFERENCES districts(id),
   rainfall_mm NUMERIC(10,2) NOT NULL,
-  recorded_at TIMESTAMPTZ DEFAULT now()
+  recorded_at TIMESTAMPTZ DEFAULT now(),
+  timestamp TIMESTAMPTZ DEFAULT now(),
+  source TEXT
 );
 
 CREATE TABLE IF NOT EXISTS river_levels (

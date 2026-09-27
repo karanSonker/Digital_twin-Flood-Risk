@@ -67,6 +67,9 @@ async function ensureSchema() {
   if (!(await columnExists('rainfall_readings', 'timestamp'))) {
     await pool.query(`ALTER TABLE rainfall_readings ADD COLUMN timestamp TIMESTAMPTZ DEFAULT now();`);
   }
+  if (!(await columnExists('rainfall_readings', 'source'))) {
+    await pool.query(`ALTER TABLE rainfall_readings ADD COLUMN source TEXT;`);
+  }
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS river_levels (
@@ -122,7 +125,12 @@ async function ensureSchema() {
 async function insertAlert(a: { severity: string; message: string }) {
   const hasSeverity = await columnExists('alerts', 'severity');
   const hasLevel = await columnExists('alerts', 'level');
-  if (hasSeverity) {
+  if (hasSeverity && hasLevel) {
+    await pool.query(
+      `INSERT INTO alerts (severity, level, message, created_at) VALUES ($1, $1, $2, now())`,
+      [a.severity, a.message]
+    );
+  } else if (hasSeverity) {
     await pool.query(`INSERT INTO alerts (severity, message, created_at) VALUES ($1, $2, now())`, [a.severity, a.message]);
   } else if (hasLevel) {
     await pool.query(`INSERT INTO alerts (level, message, created_at) VALUES ($1, $2, now())`, [a.severity, a.message]);

@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# India Flood-Risk Digital Twin
 
-## Getting Started
+A Next.js dashboard for district flood-risk scores, alerts, and map data.
 
-First, run the development server:
+## Run Locally on Windows
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js and npm
+- Docker Desktop, running
+
+Open PowerShell in the repository folder and enter the application directory:
+
+```powershell
+cd .\flood-risk-digital-twin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run these commands from that directory, where `package.json` is located:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```powershell
+npm install
+docker compose up -d --wait
+npm run seed
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000). The development server is started by `npm run dev`; you do not run a TypeScript or page file directly. The main page source is `app/page.tsx`.
 
-## Learn More
+Docker publishes Postgres on host port `5433` because port `5432` may already be used by a locally installed PostgreSQL server. The local `.env.local` connection string must use port `5433`:
 
-To learn more about Next.js, take a look at the following resources:
+```text
+DATABASE_URL=postgresql://postgres:postgres@localhost:5433/floodrisk
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The seed command runs `scripts/seed.ts` and loads sample districts, risk scores, readings, and alerts into the local database. This is sample data, not live weather data. To stop the app, press `Ctrl+C`. To stop the database container while preserving its data, run `docker compose down`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Verify the API
 
-## Deploy on Vercel
+With the development server and database running, these endpoints should return seeded records:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [http://localhost:3000/api/risk/current](http://localhost:3000/api/risk/current)
+- [http://localhost:3000/api/alerts/latest](http://localhost:3000/api/alerts/latest)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Vercel Deployment
+
+The local Docker database is not available to Vercel. The deployed app needs a separately hosted PostgreSQL database with PostGIS, and its connection string must be configured as `DATABASE_URL` in the Vercel project's Environment Variables, followed by a redeployment. The database schema and seed data must also be applied to that hosted database.
+
+Without that configuration, database-backed endpoints return `503` with `Database not configured`; the deployed dashboard will show no districts or alerts. Seeded data is not automatically copied from your computer to Vercel.
