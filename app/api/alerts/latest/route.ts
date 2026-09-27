@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { hasDatabase, pool } from '@/lib/db';
 import type { AlertItem } from '@/lib/types';
 
 export async function GET() {
   try {
+    if (!hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
+
     const { rows } = await pool.query(`
       SELECT id, level, message, created_at::text AS created_at
       FROM alerts

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { hasDatabase, pool } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,6 +8,10 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    if (!hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
+
     const { id } = await params;
     const districtId = parseInt(id, 10);
     if (isNaN(districtId)) {

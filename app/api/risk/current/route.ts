@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { hasDatabase, pool } from '@/lib/db';
 import type { DistrictSummary } from '@/lib/types';
 
 export async function GET() {
   try {
+    if (!hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
+
     // Get latest risk score per district, joining districts table for name/state
     const { rows } = await pool.query(`
       SELECT DISTINCT ON (d.id)

@@ -2,10 +2,15 @@ import { Pool } from 'pg';
 
 const connectionString = process.env.DATABASE_URL;
 
-if (!connectionString) {
-  throw new Error('DATABASE_URL is missing');
-}
+export const hasDatabase = () => Boolean(connectionString);
 
-export const pool = new Pool({
-  connectionString,
-});
+export const pool = connectionString
+  ? new Pool({ connectionString })
+  : ({
+      async query() {
+        return { rows: [], rowCount: 0 };
+      },
+      async end() {
+        return undefined;
+      },
+    } as unknown as Pool);

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { pool } from '@/lib/db';
+import { hasDatabase, pool } from '@/lib/db';
 import type { DistrictDetail } from '@/lib/types';
 
 export async function GET(
@@ -7,6 +7,10 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    if (!hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
+
     const { id } = await params;
     const districtId = parseInt(id, 10);
 

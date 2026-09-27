@@ -1,6 +1,8 @@
-import { pool } from './db';
+import { hasDatabase, pool } from './db';
 
 export async function getCachedGeocode(lat: number, lng: number) {
+  if (!hasDatabase()) return null;
+
   const { rows } = await pool.query(
     `SELECT * FROM geocode_cache WHERE lat = $1 AND lng = $2 LIMIT 1`,
     [lat.toFixed(5), lng.toFixed(5)]
@@ -15,6 +17,8 @@ export async function setCachedGeocode(
   address: string | null,
   rawResponse: unknown
 ) {
+  if (!hasDatabase()) return;
+
   await pool.query(
     `
     INSERT INTO geocode_cache (lat, lng, place_name, address, raw_response)
