@@ -11,7 +11,12 @@ export async function GET() {
       LIMIT 10
     `);
 
-    const alerts: AlertItem[] = rows.map((r) => ({
+    const alerts: AlertItem[] = rows.map((r: {
+      id: number;
+      level: string;
+      message: string;
+      created_at: string;
+    }) => ({
       id: r.id,
       level: r.level,
       message: r.message,

@@ -18,7 +18,14 @@ export async function GET() {
       ORDER BY d.id, rs.timestamp DESC
     `);
 
-    const districts: DistrictSummary[] = rows.map((r) => ({
+    const districts: DistrictSummary[] = rows.map((r: {
+      id: number;
+      name: string;
+      state: string;
+      score: number;
+      zone: DistrictSummary['zone'];
+      updated_at: string;
+    }) => ({
       id: r.id,
       name: r.name,
       state: r.state,

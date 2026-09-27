@@ -133,9 +133,10 @@ async function fetchRainfall(districtIds: number[]): Promise<Record<number, numb
 }
 
 async function fetchRiverLevels(districtIds: number[]): Promise<Record<number, number>> {
+  const centroids = await fetchCentroids(districtIds);
+
   // 1. Open-Meteo Flood API (free, no key needed) — live river discharge from GloFAS
   try {
-    const centroids = await fetchCentroids(districtIds);
     const results = await Promise.all(
       districtIds.map(async (id) => {
         const c = centroids[id];
@@ -269,7 +270,7 @@ async function pump() {
     for (const alert of alerts) {
       await pool.query(
         'INSERT INTO alerts (message, severity, level) VALUES ($1, $2, $3)',
-        [alert.message ?? alert.msg ?? 'Flood alert', alert.level ?? 'low', alert.level ?? 'low']
+        [alert.message ?? 'Flood alert', alert.level ?? 'low', alert.level ?? 'low']
       );
     }
 

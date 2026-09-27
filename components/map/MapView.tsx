@@ -23,7 +23,7 @@ type DistrictGeoJson = {
   }>;
 };
 
-const zoneFill = {
+const zoneFill: any = {
   id: 'zone-fill',
   type: 'fill',
   paint: {
@@ -40,16 +40,16 @@ const zoneFill = {
     ],
     'fill-opacity': 0.6,
   },
-} as const;
+};
 
-const zoneLine = {
+const zoneLine: any = {
   id: 'zone-line',
   type: 'line',
   paint: {
     'line-color': '#ffffff',
     'line-width': 1,
   },
-} as const;
+};
 
 export default function MapView() {
   const stream = useRiskStream();

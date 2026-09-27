@@ -4,14 +4,14 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function GET(request: Request) {
-  const stream = new ReadableStream({
+  const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       const encoder = new TextEncoder();
 
       let closed = false;
       const isClosed = () => closed;
 
-      const safeEnqueue = (data: string) => {
+      const safeEnqueue = (data: Uint8Array) => {
         if (!isClosed()) {
           try { controller.enqueue(data); } catch { /* ignore */ }
         }
